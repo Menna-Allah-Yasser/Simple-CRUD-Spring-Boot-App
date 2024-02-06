@@ -23,4 +23,11 @@ public class UserService {
 		return userRepo.findById(id);
 	}
 
+	public List<User> findUsersByLocationId(Long id){
+		return userRepo.findByLocationId(id);
+	}
+	
+	public void addUser(User user) {
+		userRepo.save(user);
+	}
 }

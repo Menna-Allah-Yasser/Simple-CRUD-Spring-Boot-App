@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.facebook.entity.Location;
@@ -27,4 +28,8 @@ public class LocationController {
 		return locationService.findById(id);
 	}
 
+	@PostMapping("/location/add")
+	public void addLocation(Location location) {
+		locationService.addLocation(location);
+	}
 }

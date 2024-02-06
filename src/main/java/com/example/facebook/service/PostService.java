@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.facebook.entity.Post;
+import com.example.facebook.entity.User;
 import com.example.facebook.repository.PostRepo;
 
 @Service
@@ -21,6 +22,14 @@ public class PostService {
 
 	public Optional<Post> findById(Long id) {
 		return postRepo.findById(id);
+	}
+	
+	public List<Post> findPostsByUserId(Long id){
+		return postRepo.findByUserId(id);
+	}
+	
+	public void addPost(Post post) {
+		postRepo.save(post);
 	}
 
 }

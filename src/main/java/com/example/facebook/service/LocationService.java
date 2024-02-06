@@ -22,5 +22,9 @@ public class LocationService {
 	public Optional<Location> findById(Long id) {
 		return locationRepo.findById(id);
 	}
+	
+	public void addLocation(Location location) {
+		locationRepo.save(location);
+	}
 
 }

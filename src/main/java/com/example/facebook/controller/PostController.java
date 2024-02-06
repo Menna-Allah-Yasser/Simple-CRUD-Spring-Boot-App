@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.facebook.entity.Post;
@@ -25,6 +26,16 @@ public class PostController {
 	@GetMapping("/posts/{id}")
 	public Optional<Post> getPostById(@PathVariable Long id) {
 	    return postService.findById(id);
+	}
+	
+	@GetMapping("/posts/users/{id}")
+	public List<Post> findPostsByUserId(@PathVariable Long id){
+		return postService.findPostsByUserId(id);
+	}
+	
+	@PostMapping("/posts/add")
+	public void addPost(Post post) {
+		postService.addPost(post);
 	}
 
 }
