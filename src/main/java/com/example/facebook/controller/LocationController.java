@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,5 +38,10 @@ public class LocationController {
 	@PutMapping("/location/update")
 	public Location updateLocation(Location newLocation) {
 		return locationService.updateLocation(newLocation);
+	}
+	
+	@DeleteMapping("/location/delete/{id}")
+	public void deleteLocation(@PathVariable Long id) {
+		locationService.deleteLocation(id);
 	}
 }

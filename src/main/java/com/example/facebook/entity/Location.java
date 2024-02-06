@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -15,7 +16,7 @@ public class Location {
 	private Long id;
 	private String name;
 	
-	@OneToMany(mappedBy="location")
+	@OneToMany(mappedBy="location" , cascade = CascadeType.ALL)
 	private List<User> users;
 	
 	public Location() {}

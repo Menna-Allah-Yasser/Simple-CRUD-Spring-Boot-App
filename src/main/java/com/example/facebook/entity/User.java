@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -30,7 +31,7 @@ public class User {
 	@JoinColumn(name = "loc_id")
 	private Location location;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user" , cascade = CascadeType.ALL)
 	private List<Post> posts;
 	
 	public User() {}

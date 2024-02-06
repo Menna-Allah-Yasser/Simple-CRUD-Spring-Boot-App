@@ -31,4 +31,9 @@ public class LocationService {
 		return locationRepo.save(newLocation);
 	}
 
+	public void deleteLocation(Long id) {
+		locationRepo.deleteById(id);
+		
+	}
+
 }
