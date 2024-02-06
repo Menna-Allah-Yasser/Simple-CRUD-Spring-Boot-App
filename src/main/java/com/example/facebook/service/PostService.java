@@ -20,8 +20,8 @@ public class PostService {
 		return (List<Post>) postRepo.findAll();
 	}
 
-	public Optional<Post> findById(Long id) {
-		return postRepo.findById(id);
+	public Post findById(Long id) {
+		return postRepo.findById(id).orElseThrow();
 	}
 	
 	public List<Post> findPostsByUserId(Long id){
@@ -30,6 +30,24 @@ public class PostService {
 	
 	public void addPost(Post post) {
 		postRepo.save(post);
+	}
+	
+	public Post updatePost(Post newPost) {
+		Post oldPost = findById(newPost.getId());
+		
+		if(newPost.getPostDate()==null) {
+			newPost.setPostDate(oldPost.getPostDate());
+		}
+		
+		if(newPost.getDetails()==null) {
+			newPost.setDetails(oldPost.getDetails());
+		}
+		
+		if(newPost.getUser()==null) {
+			newPost.setUser(oldPost.getUser());
+		}
+		
+		return postRepo.save(newPost);
 	}
 
 }

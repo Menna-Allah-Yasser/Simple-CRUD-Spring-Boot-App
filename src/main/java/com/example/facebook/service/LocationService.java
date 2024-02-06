@@ -26,5 +26,9 @@ public class LocationService {
 	public void addLocation(Location location) {
 		locationRepo.save(location);
 	}
+	
+	public Location updateLocation(Location newLocation) {
+		return locationRepo.save(newLocation);
+	}
 
 }
